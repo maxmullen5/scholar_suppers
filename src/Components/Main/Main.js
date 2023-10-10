@@ -27,7 +27,12 @@ const Main = () => {
   return (
     <div>
       <Header />
-      This is the main stateful parent component.
+      <div class="outer_div">
+      <div>
+        <h1>Welcome Back!</h1>
+        <h2>Your Groups:</h2>
+      </div>
+    </div>
       <MainList lessons={lessons} />
     </div>
   );

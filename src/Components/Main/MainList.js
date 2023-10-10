@@ -2,10 +2,7 @@
 const MainList = ({ lessons }) => {
     return (
       <div>
-        <hr />
-        This is the main list stateless child component.
         <div>
-          <p> Lesson by ID: </p>
           {/* Check that the lesson object exists */}
           {lessons.length > 0 && (
             <ul>
