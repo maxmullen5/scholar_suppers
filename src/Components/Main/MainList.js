@@ -3,15 +3,15 @@ const MainList = ({ groups }) => {
     return (
       <div>
         <div>
-          {/* Check that the lesson object exists */}
+          {/* Check that the group object exists */}
           {groups.length > 0 && (
             <ul>
-              {/* Using getter for lesson Object to display name */}
-              {groups.map((lesson) => (
+              {/* Using getter for group Object to display name */}
+              {groups.map((group) => (
                 <div className="group">
-                <li key={lesson.id}>
+                <li key={group.id}>
                   {" "}
-                  {lesson.get("name")}
+                  {group.get("name")}
                 </li>
                 </div>
               ))}
