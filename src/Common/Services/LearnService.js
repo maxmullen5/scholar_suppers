@@ -2,48 +2,48 @@ import Parse from "parse";
 /* SERVICE FOR PARSE SERVER OPERATIONS */
 
 // CREATE operation - new lesson with Name
-export const createLesson = (Name) => {
+export const createGroup = (Name) => {
   console.log("Creating: ", Name);
-  const Lesson = Parse.Object.extend("Lesson");
-  const lesson = new Lesson();
+  const Group = Parse.Object.extend("Group");
+  const group = new Group();
   // using setter to UPDATE the object
-  lesson.set("name", Name);
-  return lesson.save().then((result) => {
-    // returns new Lesson object
+  group.set("name", Name);
+  return group.save().then((result) => {
+    // returns new Group object
     return result;
   });
 };
 
 // READ operation - get lesson by ID
 export const getById = (id) => {
-  const Lesson = Parse.Object.extend("Lesson");
-  const query = new Parse.Query(Lesson);
+  const Group = Parse.Object.extend("Group");
+  const query = new Parse.Query(Group);
   return query.get(id).then((result) => {
-    // return Lesson object with objectId: id
+    // return Group object with objectId: id
     return result;
   });
 };
 
-export let Lessons = {};
-Lessons.collection = [];
+export let Groups = {};
+Groups.collection = [];
 
-// READ operation - get all lessons in Parse class Lesson
-export const getAllLessons = () => {
-  const Lesson = Parse.Object.extend("Lesson");
-  const query = new Parse.Query(Lesson);
+// READ operation - get all lessons in Parse class Group
+export const getAllGroups = () => {
+  const Group = Parse.Object.extend("Group");
+  const query = new Parse.Query(Group);
   return query.find().then((results) => {
     console.log("results: ", results);
-    // returns array of Lesson objects
+    // returns array of Group objects
     return results;
   });
 };
 
 // DELETE operation - remove lesson by ID
-export const removeLesson = (id) => {
-  const Lesson = Parse.Object.extend("Lesson");
-  const query = new Parse.Query(Lesson);
-  return query.get(id).then((lesson) => {
-    lesson.destroy();
+export const removeGroup = (id) => {
+  const Group = Parse.Object.extend("Group");
+  const query = new Parse.Query(Group);
+  return query.get(id).then((group) => {
+    group.destroy();
   });
 };
 

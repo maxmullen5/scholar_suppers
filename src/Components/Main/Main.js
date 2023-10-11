@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllLessons, Lessons } from "../../Common/Services/LearnService";
+import { getAllGroups, Groups } from "../../Common/Services/LearnService";
 import Header from "../Header/Header.js";
 import MainList from "./MainList";
 // import useFetch from "../../Common/Services/useFetch.js";
@@ -9,17 +9,17 @@ const Main = () => {
   // const data = useFetch("https://jsonplaceholder.typicode.com/todos/");
   // console.log("data: ", data);
   // Variables in the state to hold data
-  const [lessons, setLessons] = useState([]);
+  const [groups, setGroups] = useState([]);
 
   // UseEffect to run when the page loads to
   // obtain async data and render
   useEffect(() => {
-    if (Lessons.collection.length) {
-      setLessons(Lessons.collection);
+    if (Groups.collection.length) {
+      setGroups(Groups.collection);
     } else {
-      getAllLessons().then((lessons) => {
-        console.log(lessons);
-        setLessons(lessons);
+      getAllGroups().then((groups) => {
+        console.log(groups);
+        setGroups(groups);
       });
     }
   }, []);
@@ -33,7 +33,7 @@ const Main = () => {
         <h2>Your Groups:</h2>
       </div>
     </div>
-      <MainList lessons={lessons} />
+      <MainList groups={groups} />
     </div>
   );
 };

@@ -11,3 +11,86 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.outer_div {
+  margin: 1rem;
+}
+
+h1 {
+  font-family: "Ubuntu", sans-serif;
+}
+
+p,
+h2,
+a {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Nav Bar styling */
+.navigation {
+  /* flexbox styles */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #107cb7;
+}
+
+.navigation .name {
+  margin-right: auto;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+/* Styling for group cards */
+.group {
+  background: #f1f1f1;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin-right: 2rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#group_name {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Overwrite default button color */
+.btn.btn-primary {
+  background-color: #107cb7;
+  border-color: #107cb7;
+  margin-left: 2rem;
+}
+
+/* Overwrite default button hover color */
+.btn.btn-primary:hover {
+  background-color: #0c5c87;
+  border-color: #0c5c87;
+}
+
+/* Overwrite default button active color */
+.btn.btn-primary:active {
+  background-color: #0c5c87 !important;
+  border-color: #0c5c87;
+}
+
+.nav_div {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
