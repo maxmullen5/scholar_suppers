@@ -1,17 +1,19 @@
 /* STATEFUL PARENT COMPONENT */
-const MainList = ({ lessons }) => {
+const MainList = ({ groups }) => {
     return (
       <div>
         <div>
           {/* Check that the lesson object exists */}
-          {lessons.length > 0 && (
+          {groups.length > 0 && (
             <ul>
               {/* Using getter for lesson Object to display name */}
-              {lessons.map((lesson) => (
+              {groups.map((lesson) => (
+                <div className="group">
                 <li key={lesson.id}>
                   {" "}
-                  {lesson.id} | {lesson.get("name")}{" "}
+                  {lesson.get("name")}
                 </li>
+                </div>
               ))}
             </ul>
           )}
