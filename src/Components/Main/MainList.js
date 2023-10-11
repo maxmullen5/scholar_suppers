@@ -8,10 +8,12 @@ const MainList = ({ groups }) => {
             <ul>
               {/* Using getter for lesson Object to display name */}
               {groups.map((lesson) => (
+                <div className="group">
                 <li key={lesson.id}>
                   {" "}
-                  {lesson.id} | {lesson.get("name")}{" "}
+                  {lesson.get("name")}
                 </li>
+                </div>
               ))}
             </ul>
           )}

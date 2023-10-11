@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllGroups, Groups } from "../../Common/Services/LearnService";
+import { getAllGroups, Groups } from "../../Common/Services/Groups";
 import Header from "../Header/Header.js";
 import MainList from "./MainList";
 // import useFetch from "../../Common/Services/useFetch.js";
