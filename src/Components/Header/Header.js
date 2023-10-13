@@ -1,9 +1,9 @@
 // header function that inputs header html
 const Header = () => {
     return (
-      <div class="nav_div">
-        <ul class="navigation">
-          <li class="name">
+      <div className="nav_div">
+        <ul className="navigation">
+          <li className="name">
             <a href=".">Scholar Suppers</a>
           </li>
           <li>

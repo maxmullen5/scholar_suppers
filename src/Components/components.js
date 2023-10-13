@@ -7,7 +7,7 @@ export default function Components() {
     <Router>
       <Main />
       <Routes>
-        <Route path="/Home" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="/Main" element={<Main />} />
         <Route path="/GroupHome" element={<GroupHome />} />
       </Routes>
