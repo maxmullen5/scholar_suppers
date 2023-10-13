@@ -8,8 +8,8 @@ const GroupHomeList = ({ meals }) => {
             <ul>
               {/* Using getter for meal Object to display name */}
               {meals.map((meal) => (
-                <div className="group">
-                <li key={meal.id}>
+                <div key={meal.id} className="group">
+                <li>
                   {" "}
                   {meal.get("name")}
                 </li>

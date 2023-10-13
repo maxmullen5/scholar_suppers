@@ -27,7 +27,7 @@ const GroupHome = () => {
   return (
     <div>
       <Header />
-      <div class="outer_div">
+      <div className="outer_div">
       <div>
         <h1>Welcome Back!</h1>
         <h2>Your Meals:</h2>
