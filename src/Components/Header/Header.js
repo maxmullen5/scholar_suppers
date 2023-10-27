@@ -14,7 +14,7 @@ const Header = () => {
             <Link to="/GroupHome">Meals</Link>
           </li>
           <li>
-            <a href="../index.html">Log out</a>
+          <Link to="/logout">Logout</Link>
           </li>
         </ul>
       </div>

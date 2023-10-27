@@ -10,7 +10,7 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
     if (!checkUser()) {
       navigate("/auth");
     }
-  }, []); // The empty dependency array ensures this useEffect runs only once when the component mounts.
+  }, [navigate]); 
 
   if (checkUser()) {
     return <Component />;

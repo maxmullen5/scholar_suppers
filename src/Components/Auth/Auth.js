@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { checkUser } from "./AuthService";
+import Header from "../Header/Header.js"
 
 const AuthModule = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const AuthModule = () => {
 
   return (
     <div>
+      <Header />
       <Link to="/auth/register">
         <button>Register</button>
       </Link>
