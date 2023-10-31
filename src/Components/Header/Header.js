@@ -5,13 +5,13 @@ const Header = () => {
       <div className="nav_div">
         <ul className="navigation">
           <li className="name">
-            <a href=".">Scholar Suppers</a>
+            <a href="/">Scholar Suppers</a>
           </li>
           <li>
-            <Link to="/Main">Groups</Link>
+            <Link to="/">Groups</Link>
           </li>
           <li>
-            <Link to="/GroupHome">Meals</Link>
+            <Link to="/group">Meals</Link>
           </li>
           <li>
           <Link to="/logout">Logout</Link>
