@@ -18,13 +18,26 @@ const AuthModule = () => {
   return (
     <div>
       <Header />
+      <div class="outer_div">
+        <div>
+          <h1 class="title">Scholar Suppers</h1>
+          <h2 class="slogan">Helping roommates coordinate meals</h2>
+        </div>
+        <div>
+          <img
+            className="logo"
+            src="/scholar_suppers_logo.png"
+            alt="Scholar Suppers Logo"
+            width="470"
+            height="300"
+          />
+        </div>
+      </div>
       <Link to="/auth/register">
-        <button>Register</button>
+        <button className="btn btn-primary">Register</button>
       </Link>
-      <br />
-      <br />
       <Link to="/auth/login">
-        <button>Login</button>
+        <button className="btn btn-secondary">Login</button>
       </Link>
     </div>
   );
