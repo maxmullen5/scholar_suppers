@@ -11,6 +11,7 @@ import AuthLogin from "./Auth/AuthLogin";
 import AuthLogout from "./Auth/AuthLogout.js";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.js";
 import Main from "./Main/Main";
+import GroupHome from "./GroupHome/GroupHome";
 
 // routing for which links take to which pages 
 // root will be changed in upcoming feature to sign in page
@@ -25,6 +26,14 @@ export default function Components() {
         <Route
           path="/"
           element={<ProtectedRoute path="/" element={Main} />}
+        />
+        <Route
+          path="/Main"
+          element={<ProtectedRoute path="/Main" element={Main} />}
+        />
+        <Route
+          path="/GroupHome"
+          element={<ProtectedRoute path="/GroupHome" element={GroupHome} />}
         />
         <Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>
