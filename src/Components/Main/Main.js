@@ -28,13 +28,14 @@ const Main = () => {
     <div>
       <Header />
       <div className="outer_div">
-      <div>
-        <h1>Welcome Back!</h1>
-        <h2>Your Groups:</h2>
+        <div>
+          <h1>Welcome Back!</h1>
+          <h2>Your Groups:</h2>
+        </div>
+        <MainList groups={groups} />
       </div>
     </div>
-      <MainList groups={groups} />
-    </div>
+
   );
 };
 

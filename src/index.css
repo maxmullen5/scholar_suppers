@@ -51,6 +51,19 @@ a {
   color: white;
 }
 
+.title {
+  text-align: center;
+}
+
+.slogan {
+  text-align: center;
+}
+
+.logo {
+  display: block;
+  margin: 0px auto;
+}
+
 /* Styling for group cards */
 .group {
   background: #f1f1f1;
@@ -74,6 +87,7 @@ ul {
 
 /* Overwrite default button color */
 .btn.btn-primary {
+  display: inline-block;
   background-color: #107cb7;
   border-color: #107cb7;
   margin-left: 2rem;
@@ -89,6 +103,11 @@ ul {
 .btn.btn-primary:active {
   background-color: #0c5c87 !important;
   border-color: #0c5c87;
+}
+
+.btn.btn-secondary {
+  display: inline-block;
+  margin-left: 2rem;
 }
 
 .nav_div {
