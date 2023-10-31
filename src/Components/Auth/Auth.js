@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { checkUser } from "./AuthService";
-import Header from "../Header/Header.js"
+import UnauthorizedHeader from "../Header/UnauthorizedHeader.js"
 
 const AuthModule = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const AuthModule = () => {
 
   return (
     <div>
-      <Header />
+      <UnauthorizedHeader />
       <div class="outer_div">
         <div>
           <h1 class="title">Scholar Suppers</h1>
