@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { logoutUser } from "./AuthService";
+import { logoutUser } from "../../Common/Services/AuthService";
 import { useNavigate } from "react-router-dom";
 
 const AuthLogout = () => {
