@@ -18,10 +18,10 @@ const AuthModule = () => {
   return (
     <div>
       <UnauthorizedHeader />
-      <div class="outer_div">
+      <div className="outer_div">
         <div>
-          <h1 class="title">Scholar Suppers</h1>
-          <h2 class="slogan">Helping roommates coordinate meals</h2>
+          <h1 className="title">Scholar Suppers</h1>
+          <h2 className="slogan">Helping roommates coordinate meals</h2>
         </div>
         <div>
           <img
@@ -33,12 +33,14 @@ const AuthModule = () => {
           />
         </div>
       </div>
+      <div className="button_group">
       <Link to="/auth/register">
         <button className="btn btn-primary">Register</button>
       </Link>
       <Link to="/auth/login">
         <button className="btn btn-secondary">Login</button>
       </Link>
+      </div>
     </div>
   );
 };

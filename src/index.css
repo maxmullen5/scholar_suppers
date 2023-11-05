@@ -90,7 +90,6 @@ ul {
   display: inline-block;
   background-color: #107cb7;
   border-color: #107cb7;
-  margin-left: 2rem;
 }
 
 /* Overwrite default button hover color */
@@ -107,9 +106,17 @@ ul {
 
 .btn.btn-secondary {
   display: inline-block;
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 
 .nav_div {
   border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+input {
+  margin-bottom: 1rem;
+}
+
+.button_group {
+  margin: 1rem;
 }
