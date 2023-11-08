@@ -10,7 +10,7 @@ const MainList = ({ groups }) => {
             <ul>
               {/* Using getter for group Object to display name */}
               {groups.map((group) => (
-                <Link to={`/group/${group.id}`}>
+                <Link to={`/group/${group.id}`} className="link">
                 <div key={group.id} className="group">
                 <li>
                   {" "}

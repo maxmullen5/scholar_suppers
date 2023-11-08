@@ -33,7 +33,6 @@ const GroupHome = () => {
       <Header />
       <div className="outer_div">
       <div>
-        <h1>{groupId}</h1>
         <h1>Welcome Back!</h1>
         <h2>Your Meals:</h2>
       </div>

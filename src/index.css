@@ -120,3 +120,8 @@ input {
 .button_group {
   margin: 1rem;
 }
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
