@@ -21,12 +21,12 @@ const GroupHome = () => {
     if (Meals.collection.length) {
       setMeals(Meals.collection);
     } else {
-      getAllMeals().then((meals) => {
+      getAllMeals(groupId).then((meals) => {
         console.log(meals);
         setMeals(meals);
       });
     }
-  }, []);
+  }, [groupId]);
 
   return (
     <div>
