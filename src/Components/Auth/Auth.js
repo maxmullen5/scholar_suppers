@@ -15,7 +15,7 @@ const AuthModule = () => {
     }
   }, [navigate]);
 
-  // display home page
+  // display unauth home page
   return (
     <div>
       <UnauthorizedHeader />

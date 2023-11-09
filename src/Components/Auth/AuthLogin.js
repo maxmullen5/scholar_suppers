@@ -15,6 +15,7 @@ const AuthLogin = () => {
   // flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
 
+  // return to home page if user is already logged in
   useEffect(() => {
     if (checkUser()) {
       alert("You are already logged in");

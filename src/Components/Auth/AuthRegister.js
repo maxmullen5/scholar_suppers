@@ -39,8 +39,9 @@ const AuthRegister = () => {
         setAdd(false);
       });
     }
-  }, [navigate, newUser, add]);
+  }, [navigate, newUser, add]); // sets new user flags
 
+  // handles change in state
   const onChangeHandler = (e) => {
     e.preventDefault();
     console.log(e.target);
@@ -53,6 +54,7 @@ const AuthRegister = () => {
     });
   };
 
+  // handles once form is submitted
   const onSubmitHandler = (e) => {
     e.preventDefault();
     console.log("submitted: ", e.target);
