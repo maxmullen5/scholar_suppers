@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { getAllGroups, Groups } from "../../Common/Services/Groups";
 import Header from "../Header/Header.js";
 import MainList from "./MainList";
-// import useFetch from "../../Common/Services/useFetch.js";
 
 /* MAIN MODULE WITH STATEFUL PARENT AND STATELESS CHILD */
 const Main = () => {
-  // const data = useFetch("https://jsonplaceholder.typicode.com/todos/");
-  // console.log("data: ", data);
+
   // Variables in the state to hold data
   const [groups, setGroups] = useState([]);
 
@@ -24,6 +22,7 @@ const Main = () => {
     }
   }, []);
 
+  // display the user's groups
   return (
     <div>
       <Header />

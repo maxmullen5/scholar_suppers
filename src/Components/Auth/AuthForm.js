@@ -3,10 +3,12 @@ import UnauthorizedHeader from "../Header/UnauthorizedHeader";
 
 const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
 
+  // form for user to regiser or login
   return (
     <div>
       <UnauthorizedHeader />
     <div className="outer_div">
+      {/* Conditionally show either login or register */}
       <h2>{isLogin ? "Login" : "Register"}</h2>
       <form onSubmit={onSubmit} autoComplete="off">
         {!isLogin ?

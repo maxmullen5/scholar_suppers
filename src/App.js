@@ -1,12 +1,13 @@
 import React from "react";
-import Main from "./Components/Main/Main";
+//import Main from "./Components/Main/Main";
 import * as Env from "./environments";
 import Parse from "parse";
 import './App.css';
 import Components from "./Components/components";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import WebFont from 'webfontloader';
+//import WebFont from 'webfontloader'; could not load asyncronously
 
+var WebFont = require('webfontloader'); // makes it so that it loads before loading the font
 WebFont.load({
   google: {
     families: ['Roboto:400,700', 'Ubuntu:500,700']

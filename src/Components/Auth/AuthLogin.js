@@ -27,9 +27,6 @@ const AuthLogin = () => {
     if (currentUser && add) {
       loginUser(currentUser).then((userLoggedIn) => {
         if (userLoggedIn) {
-          alert(
-            `${userLoggedIn.get("firstName")}, you successfully logged in!`
-          );
           navigate("/");
         }
         // TODO: redirect user to main app

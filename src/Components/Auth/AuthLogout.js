@@ -9,8 +9,7 @@ const AuthLogout = () => {
     logoutUser()
       .then((success) => {
         if (success) {
-          alert("You have been logged out.");
-          navigate("/auth"); // or wherever you want to redirect after logout
+          navigate("/auth");
         } else {
           navigate("/"); // If there's an error, navigate to the homepage or another appropriate page
         }
