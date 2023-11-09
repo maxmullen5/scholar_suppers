@@ -8,12 +8,6 @@ const Header = () => {
             <a href="/">Scholar Suppers</a>
           </li>
           <li>
-            <Link to="/">Groups</Link>
-          </li>
-          <li>
-            <Link to="/group">Meals</Link>
-          </li>
-          <li>
           <Link to="/logout">Logout</Link>
           </li>
         </ul>

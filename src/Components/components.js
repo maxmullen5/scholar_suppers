@@ -28,8 +28,8 @@ export default function Components() {
           element={<ProtectedRoute path="/" element={Main} />}
         />
         <Route
-          path="/group"
-          element={<ProtectedRoute path="/group" element={GroupHome} />}
+          path="/group/:groupId"
+          element={<ProtectedRoute path="/group/:groupId" element={GroupHome} />}
         />
         <Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>

@@ -27,16 +27,22 @@ export const getById = (id) => {
 export let Meals = {};
 Meals.collection = [];
 
-// READ operation - get all Meals in Parse class Meal
-export const getAllMeals = () => {
+// READ operation - get all Meals for a specific Group in Parse class Meal
+export const getAllMeals = (groupId) => {
   const Meal = Parse.Object.extend("Meal");
   const query = new Parse.Query(Meal);
+  
+  const Group = Parse.Object.extend("Group");
+  const groupPointer = Group.createWithoutData(groupId);
+  query.equalTo("group", groupPointer); // filter meals by the group pointer
+  
   return query.find().then((results) => {
-    console.log("results: ", results);
-    // returns array of Meal objects
+    console.log("Meals for current group: ", results);
+    // returns array of Meal objects that match the groupId
     return results;
   });
 };
+
 
 // DELETE operation - remove meal by ID
 export const removeMeal = (id) => {
