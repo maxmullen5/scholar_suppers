@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { getAllMeals, Meals } from "../../Common/Services/Meals";
 import Header from "../Header/Header.js";
 import GroupList from "./GroupHomeList";
-// import useFetch from "../../Common/Services/useFetch.js";
 
 /* MAIN MODULE WITH STATEFUL PARENT AND STATELESS CHILD */
 const GroupHome = () => {
-  // const data = useFetch("https://jsonplaceholder.typicode.com/todos/");
-  // console.log("data: ", data);
+
   // Variables in the state to hold data
   const [meals, setMeals] = useState([]);
 
@@ -24,6 +22,7 @@ const GroupHome = () => {
     }
   }, []);
 
+  // Display the group's meals
   return (
     <div>
       <Header />

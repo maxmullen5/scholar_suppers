@@ -15,5 +15,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
   
 - Getting data from actual Back4App database now
+
+## [0.3.0] - 2023-11-08
  
-### Fixed
+### Added
+
+- Functionality to register, login, and logout
+- Protected routes that can only be accessed once logged in
+- Fonts and added styling

@@ -47,15 +47,3 @@ export const removeGroup = (id) => {
     group.destroy();
   });
 };
-
-// export const getArtistById = (id) => {
-
-// }
-
-// export const getAlbumByArtist = (artist) => {
-//   const Album = Parse.Object.extend("Album");
-//   const query = new Parse.Query(Album);
-//   query.equalTo("artist", artist); // not artist id, it's the whole artist parse object
-//   return query.find().then(results => results);
-//   // [{ParseObject}]
-// }
