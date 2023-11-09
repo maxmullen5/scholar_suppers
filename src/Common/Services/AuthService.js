@@ -57,3 +57,14 @@ export const logoutUser = () => {
       return false; // Failed to log out
     });
 };
+
+// Function to get the current user's ID
+export const getCurrentUserId = () => {
+  const currentUser = Parse.User.current();
+  // Check if there is a logged-in user
+  if (currentUser) {
+    return currentUser.id; // or currentUser.get('objectId') if using a key to access the ID
+  } else {
+    return null; // No user is logged in
+  }
+};
