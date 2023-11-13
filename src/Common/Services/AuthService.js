@@ -68,3 +68,14 @@ export const getCurrentUserId = () => {
     return null; // No user is logged in
   }
 };
+
+// Function to get the current user's name
+export const getCurrentUserName = () => {
+  const currentUser = Parse.User.current();
+  // Check if there is a logged-in user
+  if (currentUser) {
+    return currentUser.get("firstName");
+  } else {
+    return null; // No user is logged in
+  }
+};
