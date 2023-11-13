@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { getAllGroups, Groups } from "../../Common/Services/Groups";
+import { getAllGroups } from "../../Common/Services/Groups";
+import { getCurrentUserId } from "../../Common/Services/AuthService";
 import Header from "../Header/Header.js";
 import MainList from "./MainList";
 
-/* MAIN MODULE WITH STATEFUL PARENT AND STATELESS CHILD */
 const Main = () => {
-
-  // Variables in the state to hold data
   const [groups, setGroups] = useState([]);
 
-  // UseEffect to run when the page loads to
-  // obtain async data and render
   useEffect(() => {
-    if (Groups.collection.length) {
-      setGroups(Groups.collection);
-    } else {
-      getAllGroups().then((groups) => {
+    // Call getCurrentUserId to get the ID of the currently logged-in user
+    const userId = getCurrentUserId();
+
+    if (userId) {
+      // If we have a user ID, fetch the groups associated with this user
+      getAllGroups(userId).then((groups) => {
         console.log(groups);
         setGroups(groups);
       });
+    } else {
+      // If there is no logged-in user, handle accordingly (e.g., redirect to login)
+      console.log('No user is currently logged in.');
+      // Redirect to login or other appropriate action
     }
   }, []);
 
-  // display the user's groups
   return (
     <div>
       <Header />
@@ -34,7 +35,6 @@ const Main = () => {
         <MainList groups={groups} />
       </div>
     </div>
-
   );
 };
 
