@@ -8,7 +8,7 @@ const MealList = ({ meals }) => {
             <ul>
               {/* Using getter for meal Object to display name */}
               {meals.map((meal) => (
-                <div key={meal.id} className="group">
+                <div key={meal.id} className="card">
                 <li>
                   {" "}
                   {meal.get("name")}
