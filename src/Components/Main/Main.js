@@ -6,14 +6,14 @@ import MainList from "./MainList";
 
 const Main = () => {
   const [groups, setGroups] = useState([]);
-  const [userName, setUserName] = useState(''); // State to store the user's name
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     const userId = getCurrentUserId();
 
     if (userId) {
       // Fetch the user's name
-      const name = getCurrentUserName(); // Assuming getCurrentUserName returns the name directly
+      const name = getCurrentUserName();
       setUserName(name);
 
       // Fetch the groups associated with this user
@@ -23,7 +23,6 @@ const Main = () => {
       });
     } else {
       console.log('No user is currently logged in.');
-      // Redirect to login or other appropriate action
     }
   }, []);
 

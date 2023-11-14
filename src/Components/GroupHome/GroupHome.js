@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import { getCurrentUserId, getCurrentUserName } from "../../Common/Services/AuthService";
 import { getAllMeals, Meals } from "../../Common/Services/Meals";
 import { getAllChores, Chores } from "../../Common/Services/Chores";
 import Header from "../Header/Header.js";
@@ -14,9 +15,21 @@ const GroupHome = () => {
   // Variables in the state to hold data
   const [meals, setMeals] = useState([]);
   const [chores, setChores] = useState([]);
+  const [userName, setUserName] = useState('');
 
   // UseEffect to run when the page loads to
   // obtain async data and render
+  useEffect(() => {
+    const userId = getCurrentUserId();
+
+    if (userId) {
+      // Fetch the user's name
+      const name = getCurrentUserName();
+      setUserName(name);
+    } 
+  }, []);
+
+
   useEffect(() => {
     // Function to fetch meals and then chores
     const fetchGroupData = async () => {
@@ -50,7 +63,7 @@ const GroupHome = () => {
       <Header />
       <div className="outer_div">
         <div>
-          <h1>Welcome Back!</h1>
+          <h1>Welcome Back, {userName}!</h1>
           <h2>Meals:</h2>
         </div>
         <MealList meals={meals} />
