@@ -1,5 +1,5 @@
 /* STATEFUL PARENT COMPONENT */
-const GroupHomeList = ({ meals }) => {
+const MealList = ({ meals }) => {
     return (
       <div>
         <div>
@@ -22,5 +22,5 @@ const GroupHomeList = ({ meals }) => {
     );
   };
   
-  export default GroupHomeList;
+  export default MealList;
   

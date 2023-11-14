@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { getAllMeals, Meals } from "../../Common/Services/Meals";
 import Header from "../Header/Header.js";
-import GroupList from "./GroupHomeList";
+import MealList from "./MealList";
 
 /* MAIN MODULE WITH STATEFUL PARENT AND STATELESS CHILD */
 const GroupHome = () => {
@@ -37,7 +37,7 @@ const GroupHome = () => {
         <h2>Your Meals:</h2>
       </div>
     </div>
-      <GroupList meals={meals} />
+      <MealList meals={meals} />
     </div>
   );
 };
