@@ -1,5 +1,5 @@
 /* STATEFUL PARENT COMPONENT */
-const GroupHomeList = ({ meals }) => {
+const MealList = ({ meals }) => {
     return (
       <div>
         <div>
@@ -8,7 +8,7 @@ const GroupHomeList = ({ meals }) => {
             <ul>
               {/* Using getter for meal Object to display name */}
               {meals.map((meal) => (
-                <div key={meal.id} className="group">
+                <div key={meal.id} className="card">
                 <li>
                   {" "}
                   {meal.get("name")}
@@ -22,5 +22,5 @@ const GroupHomeList = ({ meals }) => {
     );
   };
   
-  export default GroupHomeList;
+  export default MealList;
   
