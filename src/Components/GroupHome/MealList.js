@@ -11,7 +11,7 @@ const MealList = ({ meals }) => {
                 <div key={meal.id} className="card">
                 <li>
                   {" "}
-                  {meal.get("name")}
+                  {meal.get("date").toLocaleDateString()} : {meal.get("name")} - {meal.get("notes")}
                 </li>
                 </div>
               ))}
