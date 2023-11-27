@@ -30,22 +30,27 @@ export const assignChores = async (groupId, users) => {
       throw new Error("No users available for assigning chores");
     }
 
-    chores.forEach(async (chore) => {
-      // Randomly select a user
-      const randomUser = users[Math.floor(Math.random() * users.length)];
+    // Shuffle the users array
+    for (let i = users.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [users[i], users[j]] = [users[j], users[i]];
+    }
 
-      // Assign the random user to the chore
-      chore.set("user", randomUser);
+    // Assign chores in a round-robin fashion
+    chores.forEach(async (chore, index) => {
+      const userIndex = index % users.length;
+      const userToAssign = users[userIndex];
+
+      chore.set("user", userToAssign);
 
       try {
-        // Save the updated chore back to Parse
         await chore.save();
-        console.log(`Chore ${chore.id} assigned to user ${randomUser.id}`);
+        console.log(`Chore ${chore.id} assigned to user ${userToAssign.id}`);
       } catch (error) {
         console.error("Error saving chore: ", error);
       }
     });
   } catch (error) {
-    console.error("Error in assignUserToChore: ", error);
+    console.error("Error in assignChores: ", error);
   }
 };
