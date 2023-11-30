@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import { getCurrentUserId, getCurrentUserName } from "../../Common/Services/AuthService";
 import { getAllMeals, Meals } from "../../Common/Services/Meals";
 import { getAllChores, assignChores, Chores } from "../../Common/Services/Chores";
@@ -57,7 +59,7 @@ const GroupHome = () => {
         <div>
           <h2>
             Chores:
-            <button className="btn btn-primary" onClick={handleAssignChores} style={{ marginLeft: "1rem" }}>Reassign</button>
+            <button className="btn btn-primary" onClick={handleAssignChores} style={{ marginLeft: "1rem" }}>Reassign <FontAwesomeIcon icon={faRotate} /></button>
           </h2>
         </div>
         <ChoreList chores={chores} />
