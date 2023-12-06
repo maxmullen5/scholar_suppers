@@ -20,3 +20,37 @@ export const getAllChores = (groupId) => {
     return results;
   });
 };
+
+
+export const assignChores = async (groupId, users) => {
+  try {
+    const chores = await getAllChores(groupId);
+
+    if (!users.length) {
+      throw new Error("No users available for assigning chores");
+    }
+
+    // Shuffle the users array
+    for (let i = users.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [users[i], users[j]] = [users[j], users[i]];
+    }
+
+    // Assign chores in a round-robin fashion
+    chores.forEach(async (chore, index) => {
+      const userIndex = index % users.length;
+      const userToAssign = users[userIndex];
+
+      chore.set("user", userToAssign);
+
+      try {
+        await chore.save();
+        console.log(`Chore ${chore.id} assigned to user ${userToAssign.id}`);
+      } catch (error) {
+        console.error("Error saving chore: ", error);
+      }
+    });
+  } catch (error) {
+    console.error("Error in assignChores: ", error);
+  }
+};

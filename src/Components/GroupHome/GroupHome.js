@@ -1,63 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import { getCurrentUserId, getCurrentUserName } from "../../Common/Services/AuthService";
 import { getAllMeals, Meals } from "../../Common/Services/Meals";
-import { getAllChores, Chores } from "../../Common/Services/Chores";
+import { getAllChores, assignChores, Chores } from "../../Common/Services/Chores";
+import { getUsersInGroup, Users } from "../../Common/Services/Users";
 import Header from "../Header/Header.js";
 import MealList from "./MealList";
 import ChoreList from "./ChoreList";
 
-/* MAIN MODULE WITH STATEFUL PARENT AND STATELESS CHILD */
 const GroupHome = () => {
-
   const { groupId } = useParams();
-
-  // Variables in the state to hold data
   const [meals, setMeals] = useState([]);
   const [chores, setChores] = useState([]);
+  const [users, setUsers] = useState([]);
   const [userName, setUserName] = useState('');
 
-  // UseEffect to run when the page loads to
-  // obtain async data and render
   useEffect(() => {
     const userId = getCurrentUserId();
-
     if (userId) {
-      // Fetch the user's name
-      const name = getCurrentUserName();
-      setUserName(name);
+      setUserName(getCurrentUserName());
     } 
   }, []);
 
-
   useEffect(() => {
-    // Function to fetch meals and then chores
     const fetchGroupData = async () => {
-      let fetchedMeals = [];
-      let fetchedChores = [];
-
-      // Fetch meals
-      if (Meals.collection.length) {
-        fetchedMeals = Meals.collection;
-      } else {
-        fetchedMeals = await getAllMeals(groupId);
-      }
+      const fetchedMeals = Meals.collection.length ? Meals.collection : await getAllMeals(groupId);
       setMeals(fetchedMeals);
 
-      // Fetch chores after meals are fetched
-      if (Chores.collection.length) {
-        fetchedChores = Chores.collection;
-      } else {
-        fetchedChores = await getAllChores(groupId);
-      }
+      const fetchedChores = Chores.collection.length ? Chores.collection : await getAllChores(groupId);
       setChores(fetchedChores);
+
+      const fetchedUsers = Users.collection.length ? Users.collection : await getUsersInGroup(groupId);
+      setUsers(fetchedUsers);
     };
 
-    // Call the fetch function
     fetchGroupData();
   }, [groupId]);
 
-  // Display the group's meals and chores
+  const handleAssignChores = async () => {
+    if (chores.length && users.length) {
+      await assignChores(groupId, users);
+      setChores(await getAllChores(groupId));
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -69,9 +57,12 @@ const GroupHome = () => {
         <MealList meals={meals} />
         <br />
         <div>
-          <h2>Chores:</h2>
+          <h2>
+            Chores:
+            <button className="btn btn-primary" onClick={handleAssignChores} style={{ marginLeft: "1rem" }}>Reassign <FontAwesomeIcon icon={faRotate} /></button>
+          </h2>
         </div>
-        <ChoreList chores={chores}/>
+        <ChoreList chores={chores} />
       </div>
     </div>
   );
