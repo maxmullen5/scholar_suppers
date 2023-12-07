@@ -29,3 +29,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
+
+## [0.4.0] - 2023-12-07
+ 
+### Added
+
+- Personalized welcome message
+- Each group links to its respective Group Home
+- Chores for a given group are displayed
+- Functionality to reassign chores
+
+### Changed
+- Only groups that the user is a part of are displayed
+- Only meals that belong to the given group are displayed
+
+### Fixed
