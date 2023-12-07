@@ -2,7 +2,7 @@ import Parse from "parse";
 /* SERVICE FOR PARSE SERVER OPERATIONS */
 
 // CREATE operation - new group with Name and password
-export const createGroup = (Name, Password) => {
+export const createGroup = async (Name, Password) => {
   console.log("Creating: ", Name);
   const Group = Parse.Object.extend("Group");
   const group = new Group();
