@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 
 /* STATEFUL PARENT COMPONENT */
-const MainList = ({ groups }) => {
+const MainList = ({ groups, onLeaveGroup }) => {
     return (
       <div>
         <div>
@@ -16,6 +16,9 @@ const MainList = ({ groups }) => {
                   {" "}
                   {group.get("name")}
                 </li>
+                <button onClick={() => onLeaveGroup(group.id)} className="leave-group-button">
+                  Leave Group
+                </button>
                 </div>
                 </Link>
               ))}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllGroups, createGroup } from "../../Common/Services/Groups";
+import { getAllGroups, createGroup, removeGroup } from "../../Common/Services/Groups";
 import { getCurrentUserId, getCurrentUserName } from "../../Common/Services/AuthService";
 import Header from "../Header/Header.js";
 import MainList from "./MainList";
@@ -67,6 +67,17 @@ const Main = () => {
     }
   };
 
+  const handleLeaveGroup = async (groupId) => {
+    const result = await removeGroup(groupId);
+    if (result.success) {
+      // Update groups state to exclude the left group
+      setGroups(groups.filter(group => group.id !== groupId));
+    } else {
+      // Handle errors
+      console.error("Failed to leave group. Please try again.");
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -75,12 +86,12 @@ const Main = () => {
           <h1>Welcome Back, {userName}!</h1>
           <h2>Your Groups:</h2>
         </div>
-        <MainList groups={groups} />
+        <MainList groups={groups} onLeaveGroup={handleLeaveGroup} />
         <button onClick={handleButtonClick}>{showAddGroupForm ? "Create Group" : "Add Group"}</button>
         {showAddGroupForm && (
           <div className="modal">
-            <input type="text" placeholder="Group Name" value={newGroupName} onChange={(e) => setNewGroupName(e.target.value)} />
-            <input type="password" placeholder="Password" value={newGroupPassword} onChange={(e) => setNewGroupPassword(e.target.value)} />
+            <input type="text" placeholder="Group Name" value={newGroupName} onChange={(e) => setNewGroupName(e.target.value)} name="groupName" id="groupName"/>
+            <input type="password" placeholder="Password" value={newGroupPassword} onChange={(e) => setNewGroupPassword(e.target.value)} name="groupPass" id="groupPass"/>
           </div>
         )}
 
