@@ -2,18 +2,57 @@ import Parse from "parse";
 /* SERVICE FOR PARSE SERVER OPERATIONS */
 
 // CREATE operation - new group with Name and password
-export const createGroup = async (Name, Password) => {
+export const createGroup = async (Name, Password, userId) => {
   console.log("Creating: ", Name);
   const Group = Parse.Object.extend("Group");
   const group = new Group();
-  // using setter to UPDATE the object
+
+  // Set the group's name and password
   group.set("name", Name);
-  group.set("password", Password)
-  return group.save().then((result) => {
-    // returns new Group object
-    return result;
-  });
+  group.set("password", Password);
+
+  try {
+    // Save the new Group object
+    const savedGroup = await group.save();
+
+    // Only proceed if the group was successfully created
+    if (savedGroup) {
+      const UserGroup = Parse.Object.extend("UserGroup");
+      const userGroup = new UserGroup();
+
+      // Ensure you have a valid User object
+      const userQuery = new Parse.Query(Parse.User);
+      const user = await userQuery.get(userId);
+
+      // Check if the user actually has a username set
+      if (!user.get("username")) {
+        throw new Error("The user object is missing the username field.");
+      }
+
+      // Set the user and group pointers on the UserGroup object
+      userGroup.set("user", user);
+      userGroup.set("group", savedGroup);
+
+      // Save the UserGroup object
+      await userGroup.save();
+
+      // Return the new Group object
+      return savedGroup;
+    } else {
+      throw new Error("Group creation failed");
+    }
+  } catch (error) {
+    console.error("Error creating UserGroup relationship:", error);
+    // Log the full error for debugging purposes
+    if (error instanceof Parse.Error) {
+      console.error("Parse Error code:", error.code);
+      console.error("Parse Error message:", error.message);
+    }
+    throw new Error("Failed to create group and user group relationship");
+  }
 };
+
+
 
 // READ operation - get group by ID
 export const getById = (id) => {
