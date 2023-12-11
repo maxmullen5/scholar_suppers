@@ -44,14 +44,15 @@ const Main = () => {
   };*/
 
   const handleButtonClick = async () => {
+    const userId = getCurrentUserId(); // Get the current user's ID
     if (!showAddGroupForm) {
       setShowAddGroupForm(true); // First click: Show the form
     } else {
       // Second click: Submit the form
-      const result = await createGroup(newGroupName, newGroupPassword);
-      if (result.success) {
+      const result = await createGroup(newGroupName, newGroupPassword, userId);
+      if (result) {
         // Update groups state with the new group
-        setGroups([...groups, { id: result.groupId, name: newGroupName }]);
+        setGroups([...groups, result]);
 
         // Reset form state
         setNewGroupName('');
