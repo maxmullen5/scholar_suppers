@@ -46,6 +46,16 @@ const GroupHome = () => {
     }
   };
 
+  const getShoppingList = () => {
+    const shoppingList = new Set(); // Use a Set to avoid duplicate ingredients
+    meals.forEach(meal => {
+      (meal.get("Ingredients") ?? []).forEach(ingredient => {
+        shoppingList.add(ingredient);
+      });
+    });
+    return Array.from(shoppingList); // Convert Set to Array
+  };
+
   return (
     <div>
       <Header />
@@ -63,6 +73,15 @@ const GroupHome = () => {
           </h2>
         </div>
         <ChoreList chores={chores} />
+        <br/>
+        <div>
+        <h2>Shopping List:</h2>
+        <ul>
+          {getShoppingList().map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
       </div>
     </div>
   );

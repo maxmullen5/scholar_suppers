@@ -1,30 +1,30 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-/* STATEFUL PARENT COMPONENT */
-const MainList = ({ groups }) => {
-    return (
-      <div>
-        <div>
-          {/* Check that the group object exists */}
-          {groups.length > 0 && (
-            <ul>
-              {/* Using getter for group Object to display name */}
-              {groups.map((group) => (
-                <Link to={`/group/${group.id}`} className="link">
-                <div key={group.id} className="card">
-                <li>
-                  {" "}
+const MainList = ({ groups, onLeaveGroup }) => {
+  return (
+    <div>
+      {groups.length > 0 && (
+        <ul>
+          {groups.map((group) => (
+            // The key prop is now correctly placed on the <li>
+            <li key={group.id}>
+              {/* The Link component is wrapped inside the <li> */}
+              <Link to={`/group/${group.id}`} className="link">
+                <div className="card">
+                  {/* Display the group name using the group object */}
                   {group.get("name")}
-                </li>
+                  {/* Button to handle leaving the group */}
+                  <button onClick={() => onLeaveGroup(group.id)} className="leave-group-button">
+                    Leave Group
+                  </button>
                 </div>
-                </Link>
-              ))}
-            </ul>
-          )}
-        </div>{" "}
-      </div>
-    );
-  };
-  
-  export default MainList;
-  
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export default MainList;

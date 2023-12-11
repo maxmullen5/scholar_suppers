@@ -1,5 +1,11 @@
 /* STATEFUL PARENT COMPONENT */
 const MealList = ({ meals }) => {
+    const renderIngredients = (meal) => {
+      return meal.get("Ingredients").map((ingredient, index) => (
+        <li key={index}>{ingredient}</li>
+      ));
+    };
+
     return (
       <div>
         <div>
@@ -12,6 +18,7 @@ const MealList = ({ meals }) => {
                 <li>
                   {" "}
                   {meal.get("date").toLocaleDateString()} : {meal.get("name")} - {meal.get("notes")}
+                  <ul>{renderIngredients(meal)}</ul> 
                 </li>
                 </div>
               ))}
