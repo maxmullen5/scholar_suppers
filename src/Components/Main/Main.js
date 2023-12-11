@@ -68,8 +68,10 @@ const Main = () => {
   };
 
   const handleLeaveGroup = async (groupId) => {
-    const result = await removeGroup(groupId);
-    if (result.success) {
+    const userId = getCurrentUserId(); // Get the current user's ID
+    const result = await removeGroup(groupId, userId);
+    
+    if (result) {
       // Update groups state to exclude the left group
       setGroups(groups.filter(group => group.id !== groupId));
     } else {
@@ -88,12 +90,12 @@ const Main = () => {
         </div>
         <MainList groups={groups} onLeaveGroup={handleLeaveGroup} />
         <button onClick={handleButtonClick}>{showAddGroupForm ? "Create Group" : "Add Group"}</button>
-        {showAddGroupForm && (
-          <div className="modal">
+      
+          <div className="outer_div">
             <input type="text" placeholder="Group Name" value={newGroupName} onChange={(e) => setNewGroupName(e.target.value)} name="groupName" id="groupName"/>
             <input type="password" placeholder="Password" value={newGroupPassword} onChange={(e) => setNewGroupPassword(e.target.value)} name="groupPass" id="groupPass"/>
           </div>
-        )}
+        
 
       </div>
     </div>

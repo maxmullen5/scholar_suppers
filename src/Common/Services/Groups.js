@@ -57,11 +57,37 @@ export const getAllGroups = (userId) => {
 };
 
 
-// DELETE operation - remove group by ID
-export const removeGroup = (id) => {
-  const Group = Parse.Object.extend("Group");
-  const query = new Parse.Query(Group);
-  return query.get(id).then((group) => {
-    group.destroy();
+// DELETE operation - remove UserGroup by Group ID for the current user
+export const removeGroup = (groupId, userId) => {
+  const UserGroup = Parse.Object.extend("UserGroup");
+  const userGroupQuery = new Parse.Query(UserGroup);
+
+  // Create a pointer to the User with the provided userId
+  const userPointer = {
+    __type: 'Pointer',
+    className: '_User',
+    objectId: userId
+  };
+
+  // Create a pointer to the Group with the provided groupId
+  const groupPointer = {
+    __type: 'Pointer',
+    className: 'Group',
+    objectId: groupId
+  };
+
+  // Set conditions to find the UserGroup row that matches both the user and the group
+  userGroupQuery.equalTo("user", userPointer);
+  userGroupQuery.equalTo("group", groupPointer);
+
+  return userGroupQuery.first().then((userGroup) => {
+    // If an entry exists, delete it
+    if (userGroup) {
+      return userGroup.destroy();
+    } else {
+      throw new Error("Membership not found");
+    }
+  }).catch((error) => {
+    console.error("Error removing user from group: ", error);
   });
 };

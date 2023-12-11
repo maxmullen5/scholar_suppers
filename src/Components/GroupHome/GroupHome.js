@@ -49,7 +49,9 @@ const GroupHome = () => {
   const getShoppingList = () => {
     const shoppingList = new Set(); // Use a Set to avoid duplicate ingredients
     meals.forEach(meal => {
-      meal.get("ingredients").forEach(ingredient => shoppingList.add(ingredient));
+      (meal.get("Ingredients") ?? []).forEach(ingredient => {
+        shoppingList.add(ingredient);
+      });
     });
     return Array.from(shoppingList); // Convert Set to Array
   };
